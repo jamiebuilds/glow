@@ -1,0 +1,64 @@
+{
+  "name": "glow",
+  "version": "0.0.0",
+  "description": "Make your Flow errors GLOW",
+  "main": "index.js",
+  "bin": {
+    "glow": "cli.js"
+  },
+  "repository": "https://github.com/thejameskyle/glow",
+  "author": "James Kyle <me@thejameskyle.com>",
+  "license": "MIT",
+  "keywords": ["flow", "cli", "bin", "errors", "reporter", "ui", "interface"],
+  "files": ["index.js", "cli.js"],
+  "engines": {
+    "node": ">=8.4.0"
+  },
+  "scripts": {
+    "flow": "flow",
+    "test": "ava",
+    "format": "prettier --write **/*.{md,json,js}",
+    "clean": "rm -rf dist",
+    "build:legacy": "BABEL_ENV=legacy babel src -d dist/legacy",
+    "build:modern": "BABEL_ENV=modern babel src -d dist/modern",
+    "build": "yarn run clean && yarn build:legacy && yarn build:modern",
+    "prepublish": "yarn build",
+    "precommit": "lint-staged"
+  },
+  "dependencies": {
+    "@babel/code-frame": "^7.0.0-beta.38",
+    "babel-runtime": "^6.26.0",
+    "beeper": "^1.1.1",
+    "blessed": "^0.1.81",
+    "chalk": "^2.3.0",
+    "clear": "^0.0.1",
+    "find-up": "^2.1.0",
+    "lodash.debounce": "^4.0.8",
+    "meow": "^4.0.0",
+    "multimatch": "^2.1.0",
+    "read-pkg-up": "^3.0.0",
+    "signal-exit": "^3.0.2",
+    "spawndamnit": "^1.0.0",
+    "strip-ansi": "^4.0.0"
+  },
+  "peerDependencies": {
+    "flow-bin": "^0.63.1"
+  },
+  "devDependencies": {
+    "ava": "^0.24.0",
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-flow": "^6.23.0",
+    "fixturez": "^1.1.0",
+    "flow-bin": "^0.63.1",
+    "husky": "^0.14.3",
+    "lint-staged": "^6.0.1",
+    "prettier": "^1.10.2"
+  },
+  "lint-staged": {
+    "*.{js,json,md}": ["prettier --write", "git add"]
+  }
+}

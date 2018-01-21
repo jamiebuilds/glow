@@ -1,0 +1,5 @@
+// @flow
+'use strict';
+
+// lol
+
