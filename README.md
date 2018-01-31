@@ -13,7 +13,9 @@ yarn global add glow
 yarn add --dev glow
 ```
 
-<img src="https://raw.githubusercontent.com/thejameskyle/glow/master/video.jpg" alt="Preview"/>
+<a href="https://twitter.com/thejameskyle/status/958591823789940736">
+  <img src="https://raw.githubusercontent.com/thejameskyle/glow/master/video.jpg" alt="Preview"/>
+</a>
 
 ## Usage
 
