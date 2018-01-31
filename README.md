@@ -4,6 +4,10 @@
 
 > Make your Flow errors GLOW
 
+* Pretty-printed, code highlighted type errors
+* Interactive watch mode
+* Filter through errors using globs
+
 ## Installation
 
 ```sh
