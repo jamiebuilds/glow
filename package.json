@@ -12,7 +12,7 @@
   "keywords": ["flow", "cli", "bin", "errors", "reporter", "ui", "interface"],
   "files": ["index.js", "cli.js", "dist"],
   "engines": {
-    "node": ">=8.4.0"
+    "node": ">=4.0.0"
   },
   "scripts": {
     "flow": "flow",
