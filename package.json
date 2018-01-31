@@ -10,7 +10,7 @@
   "author": "James Kyle <me@thejameskyle.com>",
   "license": "MIT",
   "keywords": ["flow", "cli", "bin", "errors", "reporter", "ui", "interface"],
-  "files": ["index.js", "cli.js"],
+  "files": ["index.js", "cli.js", "dist"],
   "engines": {
     "node": ">=8.4.0"
   },
