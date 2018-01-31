@@ -40,7 +40,8 @@
     "read-pkg-up": "^3.0.0",
     "signal-exit": "^3.0.2",
     "spawndamnit": "^1.0.0",
-    "strip-ansi": "^4.0.0"
+    "strip-ansi": "^4.0.0",
+    "util.promisify": "^1.0.0"
   },
   "peerDependencies": {
     "flow-bin": "^0.63.1"

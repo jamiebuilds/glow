@@ -1,7 +1,7 @@
 // @flow
 import * as fs from 'fs';
 import * as chokidar from 'chokidar';
-import { promisify } from 'util';
+import promisify from 'util.promisify';
 
 const readFile = promisify(fs.readFile);
 
