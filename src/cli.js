@@ -17,6 +17,7 @@ export default async function main(cwd: string, argv: Array<string>) {
 
         ${chalk.magenta('--watch, -w')}         ${chalk.cyan(Lang.get('helpFlagsWatch'))}
         ${chalk.magenta('--interactive, -i')}   ${chalk.cyan(Lang.get('helpFlagsInteractive'))}
+        ${chalk.magenta('--beep, -b')}          ${chalk.cyan(Lang.get('helpFlagsBeep'))}
         ${chalk.magenta('--quiet')}             ${chalk.cyan(Lang.get('helpFlagsQuiet'))}
         ${chalk.magenta('--debug')}             ${chalk.cyan(Lang.get('helpFlagsDebug'))}
 
@@ -52,6 +53,11 @@ export default async function main(cwd: string, argv: Array<string>) {
         alias: 'i',
         default: false
       },
+      beep: {
+        type: 'boolean',
+        alias: 'b',
+        default: false
+      },
       quiet: {
         type: 'boolean'
       },
@@ -70,13 +76,14 @@ export default async function main(cwd: string, argv: Array<string>) {
   });
 
   let filters = cli.input;
-  let { watch, interactive, quiet, debug } = cli.flags;
+  let { watch, interactive, beep, quiet, debug } = cli.flags;
 
   await glow({
     cwd,
     filters,
     watch,
     interactive,
+    beep,
     quiet,
     debug
   });

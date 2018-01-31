@@ -4,6 +4,7 @@ export type GlowOptions = {
   filters?: Array<string>,
   watch?: boolean,
   interactive?: boolean,
+  beep?: boolean,
   debug?: boolean,
   color?: boolean,
   quiet?: boolean

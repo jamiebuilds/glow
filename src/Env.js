@@ -18,6 +18,7 @@ export class Env extends EventEmitter {
   filters: Array<string>;
   watch: boolean;
   interactive: boolean;
+  beep: boolean;
   logLevel: number;
 
   flowConfigPath: string;
@@ -37,6 +38,7 @@ export class Env extends EventEmitter {
     this.filters = opts.filters || [];
     this.watch = opts.watch || false;
     this.interactive = opts.interactive || this.watch;
+    this.beep = !!opts.beep;
     this.logLevel = opts.debug
       ? LOG_LEVELS.debug
       : opts.quiet ? LOG_LEVELS.error : LOG_LEVELS.info;
