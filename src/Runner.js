@@ -153,5 +153,9 @@ export class Runner extends EventEmitter {
       }
       this.env.logger.line();
     }
+
+    if (!this.env.interactive) {
+      process.exit(1);
+    }
   }
 }
