@@ -256,6 +256,8 @@ export class Interface extends EventEmitter {
   }
 
   beep() {
-    beep();
+    if (this.env.beep) {
+      beep();
+    }
   }
 }

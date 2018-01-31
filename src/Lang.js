@@ -10,6 +10,7 @@ export const messages = {
     helpFlags: 'Flags',
     helpFlagsWatch: '...',
     helpFlagsInteractive: '...',
+    helpFlagsBeep: 'Emit a beep when Flow errors are detected',
     helpFlagsQuiet: 'Silence any stdout output unrelated to Flow status',
     helpFlagsDebug: '...',
     helpFormatters: 'Formatters',
