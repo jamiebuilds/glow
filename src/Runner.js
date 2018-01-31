@@ -5,7 +5,7 @@ import { Interface } from './Interface';
 import * as flow from './utils/flow';
 import * as fs from './utils/fs';
 import debounce from 'lodash.debounce';
-import { type GlowResult } from './types';
+import { type GlowResult, type FlowStatus } from './types';
 import multimatch from 'multimatch';
 import * as path from 'path';
 
@@ -18,6 +18,7 @@ export class Runner extends EventEmitter {
   interface: Interface;
   running: boolean;
   changed: boolean;
+  status: FlowStatus;
 
   _currentResults: Array<GlowResult>;
 
@@ -74,8 +75,8 @@ export class Runner extends EventEmitter {
       this.env.interface.setOutput('');
     }
 
-    let status = await flow.status(this.env);
-    let errors = status.errors;
+    this.status = await flow.status(this.env);
+    let errors = this.status.errors;
     let results: Array<GlowResult> = [];
 
     for (let error of errors) {
@@ -152,10 +153,6 @@ export class Runner extends EventEmitter {
         });
       }
       this.env.logger.line();
-    }
-
-    if (!this.env.interactive) {
-      process.exit(1);
     }
   }
 }
