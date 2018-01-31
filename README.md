@@ -2,7 +2,7 @@
 
 # Glow
 
-> Make your Flow errors GLOW
+> Make your [Flow](https://flow.org/) errors GLOW
 
 * Pretty-printed, code highlighted type errors
 * Interactive watch mode
@@ -23,7 +23,7 @@ yarn add --dev glow
 
 ## Usage
 
-In your existing Flow project, instead of running:
+In your existing [Flow](https://flow.org/) project, instead of running:
 
 ```sh
 flow
