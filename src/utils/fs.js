@@ -1,5 +1,6 @@
 // @flow
 import * as fs from 'fs';
+import * as chokidar from 'chokidar';
 import { promisify } from 'util';
 
 const readFile = promisify(fs.readFile);
@@ -7,7 +8,7 @@ const readFile = promisify(fs.readFile);
 export type Watcher = fs.FSWatcher;
 
 export function watchDirectory(dirName: string) {
-  return fs.watch(dirName, {
+  return chokidar.watch(dirName, {
     recursive: true,
     encoding: 'utf8',
     persistent: true
