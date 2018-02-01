@@ -91,7 +91,7 @@ export class Runner extends EventEmitter {
   }
 
   render() {
-    let results = this._currentResults;
+    let results = this._currentResults || [];
     let filters = this.env.filters.map(filter => {
       let negated = filter.indexOf('!') === 0;
       let value = negated ? filter.slice(1) : filter;
