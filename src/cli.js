@@ -78,7 +78,7 @@ export default async function main(cwd: string, argv: Array<string>) {
   let filters = cli.input;
   let { watch, interactive, beep, quiet, debug } = cli.flags;
 
-  await glow({
+  let status = await glow({
     cwd,
     filters,
     watch,
@@ -87,4 +87,8 @@ export default async function main(cwd: string, argv: Array<string>) {
     quiet,
     debug
   });
+
+  if (status.errors.length !== 0) {
+    process.exit(1);
+  }
 }

@@ -37,4 +37,6 @@ export default async function glow(opts: GlowOptions) {
   let runner = new Runner({ env });
 
   await runner.start();
+
+  return runner.status;
 }
