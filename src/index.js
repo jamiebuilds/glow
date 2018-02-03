@@ -6,6 +6,8 @@ import * as flow from './utils/flow';
 import * as timers from './utils/timers';
 import { GLOW_VERSION } from './constants';
 import onExit from 'signal-exit';
+import chalk from 'chalk';
+import { Lang } from './Lang';
 
 export default async function glow(opts: GlowOptions) {
   let cwd = opts.cwd;
@@ -19,18 +21,26 @@ export default async function glow(opts: GlowOptions) {
 
   let flowConfigPath = await flow.getFlowConfigPath(cwd);
   let flowRootDir = flow.getFlowRootDir(flowConfigPath);
-  let flowBinPath = flow.getFlowBinPath(flowRootDir);
+  let flowConfig = await flow.getFlowConfig(flowRootDir);
 
-  let env = new Env({
+  if (!flowConfig) {
+    const message = Lang.get(
+      'noFlowBinary',
+      flow.getPossibleFlowBinPaths(flowRootDir).join(', ')
+    );
+    console.error(chalk.red.bold(message));
+    process.exit(1);
+    throw new Error(message);
+  }
+
+  const env = new Env({
     ...opts,
     flowConfigPath,
     flowRootDir,
-    flowBinPath
+    flowBinPath: flowConfig.binary
   });
 
-  let flowVersion = await flow.version(env);
-
-  env.logger.title(env.lang.get('title', GLOW_VERSION, flowVersion), {
+  env.logger.title(env.lang.get('title', GLOW_VERSION, flowConfig.semver), {
     emoji: '🕵️‍♀️'
   });
 
