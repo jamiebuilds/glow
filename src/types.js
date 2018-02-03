@@ -102,3 +102,9 @@ export type GlowResult = {
   error: FlowStatusError,
   message: string
 };
+
+export type FlowConfig = {
+  semver: string,
+  binary: string,
+  build_id: string
+};
