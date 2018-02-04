@@ -88,7 +88,9 @@ export default async function main(cwd: string, argv: Array<string>) {
     debug
   });
 
-  if (status.errors.length !== 0) {
+  if (status.errors && status.errors.length !== 0) {
     process.exit(1);
+  } else if (status.exit) {
+    process.exit(status.exit.code);
   }
 }

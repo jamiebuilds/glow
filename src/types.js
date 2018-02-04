@@ -93,13 +93,20 @@ export type FlowStatusError = {
   extra?: Array<FlowExtra>
 };
 
+export type FlowStatusExit = {
+  code: number,
+  reason: string,
+  msg: string
+};
+
 export type FlowStatus = {
   flowVersion: string,
-  errors: Array<FlowStatusError>
+  errors?: Array<FlowStatusError>,
+  exit?: FlowStatusExit
 };
 
 export type GlowResult = {
-  error: FlowStatusError,
+  error?: FlowStatusError,
   message: string
 };
 
