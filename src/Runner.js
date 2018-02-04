@@ -76,13 +76,19 @@ export class Runner extends EventEmitter {
     }
 
     this.status = await flow.status(this.env);
-    let errors = this.status.errors;
     let results: Array<GlowResult> = [];
-
-    for (let error of errors) {
+    if (this.status.errors) {
+      let errors = this.status.errors;
+      for (let error of errors) {
+        results.push({
+          error,
+          message: await this.env.printer.printError(error)
+        });
+      }
+    } else if (this.status.exit) {
+      let exit = this.status.exit;
       results.push({
-        error,
-        message: await this.env.printer.printError(error)
+        message: exit.msg
       });
     }
 
@@ -116,6 +122,9 @@ export class Runner extends EventEmitter {
 
     if (filters.length) {
       filteredResults = results.filter(result => {
+        if (!result.error) {
+          return true;
+        }
         return result.error.message.find(messagePart => {
           if (messagePart.loc && messagePart.loc.source) {
             return multimatch(messagePart.loc.source, filters).length;
