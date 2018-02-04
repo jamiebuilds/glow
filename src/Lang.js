@@ -27,7 +27,8 @@ export const messages = {
     foundError: 'Found %d error.',
     foundErrors: 'Found %d errors.',
     foundErrorsWithFilters: '%s (Filters match %d)',
-    noFlowBinary: "Couldn't find any flow binaries in %s"
+    noFlowBinary: "Couldn't find any flow binaries in %s",
+    noFlowConfig: "Couldn't find a .flowconfig file"
   }
 };
 
