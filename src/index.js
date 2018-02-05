@@ -13,7 +13,7 @@ function startupError(messageKey, ...args) {
   const message = Lang.get(messageKey, ...args);
   console.error(chalk.red.bold(message));
   process.exit(1);
-  throw new Error(message);
+  return new Error(message);
 }
 
 export default async function glow(opts: GlowOptions) {
@@ -29,14 +29,14 @@ export default async function glow(opts: GlowOptions) {
   let flowConfigPath = await flow.getFlowConfigPath(cwd);
 
   if (!flowConfigPath) {
-    return startupError('noFlowConfig');
+    throw startupError('noFlowConfig');
   }
 
   let flowRootDir = flow.getFlowRootDir(flowConfigPath);
   let flowConfig = await flow.getFlowConfig(flowRootDir);
 
   if (!flowConfig) {
-    return startupError(
+    throw startupError(
       'noFlowBinary',
       flow.getPossibleFlowBinPaths(flowRootDir).join(', ')
     );
