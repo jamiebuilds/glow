@@ -150,8 +150,6 @@ export class Runner extends EventEmitter {
       );
     }
 
-    this.env.logger.success(message, { status: true });
-
     if (this.env.interface) {
       this.env.interface.setResults(filteredResults);
     } else {
@@ -163,5 +161,7 @@ export class Runner extends EventEmitter {
       }
       this.env.logger.line();
     }
+    
+    this.env.logger.success(message, { status: true });
   }
 }
