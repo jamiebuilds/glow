@@ -44,7 +44,7 @@
     "util.promisify": "^1.0.0"
   },
   "peerDependencies": {
-    "flow-bin": "^0.63.1"
+    "flow-bin": ">=0.63.1"
   },
   "devDependencies": {
     "ava": "^0.24.0",
